@@ -84,5 +84,6 @@ namespace tabuleiro
             pecas[posicao.linha, posicao.coluna] = null;
             return aux;
         }
+       
     }
 }
