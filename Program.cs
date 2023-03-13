@@ -1,6 +1,5 @@
 ﻿using tabuleiro;
 using xadrez;
-using xadrez_console.xadrez;
 
 namespace xadrez_console
 {
@@ -10,15 +9,24 @@ namespace xadrez_console
         {
             try
             {
-                Tabuleiro tab = new Tabuleiro(8, 8);
+                PartidaDeXadrez partida = new PartidaDeXadrez();
 
-                tab.ColocarPeca(new Rei(tab, Cor.Preta), new Posicao(0, 0));
-                tab.ColocarPeca(new Torre(tab, Cor.Preta), new Posicao(0, 1));
+                while (!partida.terminada)
+                {
+                    Console.Clear();
+                    Tela.ImprimirTabuleiro(partida.tab);
 
-                tab.ColocarPeca(new Torre(tab, Cor.Branca), new Posicao(2, 1));
-                tab.ColocarPeca(new Rei(tab, Cor.Branca), new Posicao(2, 2));
+                    Console.WriteLine();
+                    Console.WriteLine("Digite a posição de origem(ex:a1):");
+                    Posicao origem = Tela.lerPosicaoXadrez().ToPosicao();
 
-                Tela.ImprimirTabuleiro(tab);
+                    Console.WriteLine("Digite a posição de destino(ex:b2):");
+                    Posicao destino = Tela.lerPosicaoXadrez().ToPosicao();
+
+                    partida.executaMovimento(origem, destino);
+                }
+
+                Tela.ImprimirTabuleiro(partida.tab);
 
                 //PosicaoXadrez posicaoXadrez = new PosicaoXadrez('c', 7);
                 //Console.WriteLine(posicaoXadrez);
@@ -28,6 +36,7 @@ namespace xadrez_console
                 Console.WriteLine(ex.Message);
             }
 
+            Console.ReadKey();
         }
     }
 }

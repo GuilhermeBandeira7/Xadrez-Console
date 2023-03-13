@@ -1,5 +1,6 @@
 ﻿using System;
 using tabuleiro;
+using xadrez;
 
 namespace xadrez_console
 {
@@ -47,5 +48,17 @@ namespace xadrez_console
             }
         }
 
+        /// <summary>
+        /// Lê a posição de xadrez digitada pelo usuário.
+        /// </summary>
+        /// <returns>Uma posição de xadrez.</returns>
+        internal static PosicaoXadrez lerPosicaoXadrez()
+        {
+            string s = Console.ReadLine();
+            char coluna = s[0]; // ch recebe o primeiro caracter 
+            int linha = int.Parse(s[1] + "");
+            return new PosicaoXadrez(coluna, linha);
+
+        }
     }
 }

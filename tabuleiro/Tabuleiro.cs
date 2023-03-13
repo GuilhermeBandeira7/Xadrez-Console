@@ -72,5 +72,17 @@ namespace tabuleiro
                 throw new TabuleiroException("Posição Inválida!");
             }
         }
+
+        public Peca? RetirarPeca(Posicao posicao)
+        {
+            if(Peca(posicao) == null)
+            {
+                return null;
+            }
+            Peca aux = Peca(posicao);
+            aux.posicao = null;
+            pecas[posicao.linha, posicao.coluna] = null;
+            return aux;
+        }
     }
 }
