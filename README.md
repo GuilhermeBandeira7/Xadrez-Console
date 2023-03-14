@@ -1,2 +1,2 @@
 # Xadrez-Console
-Chess console in c#
+Chess game in CSharp console, project created using solid prinpicals.
