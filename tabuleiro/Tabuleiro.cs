@@ -21,7 +21,7 @@ namespace tabuleiro
         /// <param name="linha">Linha da peça</param>
         /// <param name="coluna">Coluna da peça</param>
         /// <returns></returns>
-        public Peca Peca(int linha, int coluna)
+        public Peca peca(int linha, int coluna)
         {
             return pecas[linha, coluna];
         }
@@ -31,7 +31,7 @@ namespace tabuleiro
         /// </summary>
         /// <param name="posicao">Posição linha e coluna da peça dentro da matriz</param>
         /// <returns></returns>
-        public Peca Peca(Posicao posicao)
+        public Peca peca(Posicao posicao)
         {
             return pecas[posicao.linha, posicao.coluna];
         }
@@ -39,7 +39,7 @@ namespace tabuleiro
         public bool ExistePeca(Posicao posicao)
         {
             ValidarPosicao(posicao);
-            return Peca(posicao) != null;   
+            return peca(posicao) != null;   
         }
 
         public void ColocarPeca(Peca peca, Posicao posicao) 
@@ -57,7 +57,7 @@ namespace tabuleiro
         /// </summary>
         /// <param name="posicao">Posição para ser validada no tabuleiro</param>
         /// <returns></returns>
-        public bool PosicaoValida(Posicao posicao)
+        public bool posicaoValida(Posicao posicao)
         {
             if (posicao.linha < 0 || posicao.linha >= linhas || posicao.coluna < 0 || posicao.coluna >= colunas)
             {
@@ -68,18 +68,18 @@ namespace tabuleiro
 
         public void ValidarPosicao(Posicao posicao)
         {
-            if(!PosicaoValida(posicao)) {
+            if(!posicaoValida(posicao)) {
                 throw new TabuleiroException("Posição Inválida!");
             }
         }
 
         public Peca? RetirarPeca(Posicao posicao)
         {
-            if(Peca(posicao) == null)
+            if(peca(posicao) == null)
             {
                 return null;
             }
-            Peca aux = Peca(posicao);
+            Peca aux = peca(posicao);
             aux.posicao = null;
             pecas[posicao.linha, posicao.coluna] = null;
             return aux;

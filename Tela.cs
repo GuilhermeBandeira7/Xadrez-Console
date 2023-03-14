@@ -13,7 +13,7 @@ namespace xadrez_console
                 Console.Write(8 - i + " ");
                 for (int j = 0; j < tabuleiro.colunas; j++)
                 {
-                    Tela.ImprimirPeca(tabuleiro.Peca(i, j));
+                    Tela.ImprimirPeca(tabuleiro.peca(i, j));
                     Console.Write(" ");
                 }
                 Console.WriteLine();
@@ -40,7 +40,7 @@ namespace xadrez_console
                     {
                         Console.BackgroundColor = fundoOriginal;
                     }
-                    Tela.ImprimirPeca(tabuleiro.Peca(i, j));
+                    Tela.ImprimirPeca(tabuleiro.peca(i, j));
                     Console.BackgroundColor = fundoOriginal;
                     Console.Write(" ");
                 }
